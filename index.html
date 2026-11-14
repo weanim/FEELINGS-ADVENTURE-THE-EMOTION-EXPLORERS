@@ -366,17 +366,20 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
   </p>
 
   <div class="year-block">
-    <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Practice</h3></div>
-    <div class="drill-frame">
+    
+<div class="zep-embed">
   <iframe
+    id="year1Zep"
     src="https://quiz.zep.us/en/play/JJE9A3"
     title="Year 1 Question Drilling"
-    allow="fullscreen; autoplay"
+    allow="fullscreen; autoplay; clipboard-read; clipboard-write"
     allowfullscreen>
   </iframe>
 </div>
-<button onclick="this.previousElementSibling.requestFullscreen()">
-  ⛶ Full Screen
+
+<button class="zep-fullscreen"
+  onclick="document.getElementById('year1Zep').requestFullscreen()">
+  ⛶ Play Full Screen
 </button>
 
 
