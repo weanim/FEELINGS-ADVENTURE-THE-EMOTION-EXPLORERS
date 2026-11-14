@@ -1,218 +1,762 @@
+
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rainbow Adventure | English Learning World</title>
-  <style>
-    :root {
-      --purple:#7651b5; --pink:#ff8eb7; --blue:#79c9f5;
-      --yellow:#ffe58a; --ink:#44345f; --cream:#fffaf0;
-    }
-    * { box-sizing:border-box; }
-    body {
-      margin:0; font-family:"Trebuchet MS",Arial,sans-serif; color:var(--ink);
-      background:linear-gradient(180deg,#bcecff 0%,#f8dafa 48%,#fff0c7 100%);
-      min-height:100vh;
-    }
-    .top {
-      text-align:center; padding:34px 18px 26px;
-      background:linear-gradient(180deg,rgba(255,255,255,.42),transparent);
-    }
-    .top .eyebrow { font-weight:800; letter-spacing:2px; color:#7651b5; }
-    h1 { font-size:clamp(2rem,6vw,4rem); margin:8px 0; color:#6746a5; text-shadow:2px 3px #fff; }
-    .subtitle { font-size:1.08rem; margin:0 auto; max-width:650px; }
-    .rainbow { font-size:clamp(2.4rem,8vw,5rem); line-height:1.2; }
-    nav { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; padding:0 15px 22px; }
-    nav a {
-      color:#fff; text-decoration:none; font-weight:800; background:var(--purple);
-      padding:11px 17px; border-radius:30px; box-shadow:0 4px 0 #51388a;
-    }
-    nav a:nth-child(2){background:#e879a7;box-shadow:0 4px 0 #b94f7d}
-    nav a:nth-child(3){background:#4e9dc8;box-shadow:0 4px 0 #33779c}
-    nav a:nth-child(4){background:#d69a32;box-shadow:0 4px 0 #a66f1b}
-    main { width:min(1100px,92%); margin:auto; }
-    .welcome {
-      background:rgba(255,255,255,.83); border:3px solid #fff; border-radius:28px;
-      padding:24px; text-align:center; box-shadow:0 10px 25px #7651b522;
-    }
-    .welcome h2 { margin:0 0 8px; font-size:1.7rem; }
-    .welcome p { margin:0; line-height:1.6; }
-    .section-title { text-align:center; margin:35px 0 16px; font-size:1.8rem; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:17px; }
-    .card {
-      background:#fff; border-radius:23px; padding:22px; text-align:center;
-      border:3px solid #fff; box-shadow:0 8px 18px #7651b51c;
-    }
-    .card .emoji { font-size:2.8rem; }
-    .card h3 { margin:8px 0; }
-    .card p { line-height:1.5; min-height:48px; }
-    button {
-      border:0; border-radius:24px; padding:11px 17px; color:#fff; background:var(--purple);
-      font-weight:800; font-size:1rem; cursor:pointer;
-    }
-    button:hover { filter:brightness(1.08); transform:translateY(-1px); }
-    .slot {
-      margin-top:30px; padding:22px; border:3px dashed #b69add; border-radius:22px;
-      background:rgba(255,255,255,.62);
-    }
-    .slot h3 { margin-top:0; }
-    .placeholder {
-      background:#fff; border-radius:15px; padding:22px; text-align:center;
-      color:#806d9d; min-height:90px; display:grid; place-items:center;
-    }
-    .music { position:fixed; left:16px; bottom:16px; z-index:5; box-shadow:0 4px 12px #0002; }
-    .helper {
-      position:fixed; right:18px; bottom:18px; z-index:8; width:58px; height:58px;
-      border-radius:50%; font-size:1.6rem; background:#e879a7; box-shadow:0 5px 0 #b94f7d;
-    }
-    .chat {
-      display:none; position:fixed; right:18px; bottom:88px; width:min(330px,calc(100vw - 36px));
-      background:white; border-radius:20px; padding:17px; box-shadow:0 10px 35px #39234a44; z-index:9;
-    }
-    .chat.show { display:block; }
-    .chat h3 { margin:0 0 8px; }
-    .chat p { line-height:1.45; }
-    .chat input { width:100%; padding:11px; border:2px solid #e4d8f4; border-radius:12px; margin:5px 0 9px; }
-    #answer { background:#f6f0ff; border-radius:12px; padding:10px; min-height:42px; }
-    footer { text-align:center; padding:36px 15px 95px; color:#685780; }
-    @media(max-width:520px) {
-      .top { padding-top:24px; }
-      .welcome { padding:19px; }
-      .music { left:10px; bottom:12px; font-size:.9rem; }
-      .helper { right:10px; bottom:12px; }
-      .chat { right:10px; bottom:82px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feelings Adventure | The Emotion Explorers</title>
+
+<style>
+:root {
+  --purple:#7550a8;
+  --deep:#49356f;
+  --pink:#f28db8;
+  --blue:#68bde8;
+  --yellow:#ffd875;
+  --ink:#3f3655;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  color:var(--ink);
+  font-family:"Trebuchet MS",Arial,sans-serif;
+  background:#dff5ff;
+}
+
+button,a { font:inherit; }
+button { cursor:pointer; }
+
+.hero {
+  min-height:650px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    180deg,#75c9f3 0%,#b8eaff 48%,
+    #fce3dc 75%,#b9e5ce 100%
+  );
+}
+
+.topbar {
+  max-width:1150px;
+  margin:auto;
+  padding:22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.brand {
+  font-weight:900;
+  color:white;
+  font-size:1.15rem;
+  text-shadow:0 2px 5px #416a9a;
+}
+
+.nav {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.nav a {
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  background:#7652a8;
+  padding:10px 16px;
+  border-radius:30px;
+}
+
+.nav a:nth-child(2) { background:#e878a8; }
+.nav a:nth-child(3) { background:#399ac4; }
+.nav a:nth-child(4) { background:#d89b35; }
+
+.hero-copy {
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:28px 18px 0;
+}
+
+.eyebrow {
+  font-weight:900;
+  letter-spacing:2px;
+  color:#654b91;
+}
+
+h1 {
+  font-size:clamp(2.3rem,6vw,4.8rem);
+  line-height:1.04;
+  margin:12px 0;
+  color:white;
+  text-shadow:0 3px 0 #8664b5,0 6px 15px #476a9b;
+}
+
+.hero-copy p {
+  font-size:1.15rem;
+  max-width:650px;
+  margin:12px auto;
+  color:#493c68;
+  font-weight:bold;
+  line-height:1.55;
+}
+
+.hero-buttons {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.btn {
+  border:0;
+  border-radius:28px;
+  padding:12px 20px;
+  font-weight:900;
+  background:var(--purple);
+  color:white;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 4px 0 #51387e;
+}
+
+.btn.yellow {
+  background:#f4bd4d;
+  color:#503c64;
+}
+
+.btn:hover {
+  transform:translateY(-2px);
+}
+
+.scene {
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:390px;
+}
+
+main {
+  max-width:1120px;
+  width:92%;
+  margin:auto;
+  position:relative;
+}
+
+.welcome {
+  background:#fffdf2;
+  border:5px solid white;
+  border-radius:28px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 9px 24px #5d47751c;
+  margin-bottom:30px;
+}
+
+.welcome h2 {
+  color:var(--deep);
+}
+
+.welcome p {
+  line-height:1.6;
+}
+
+.section-title {
+  text-align:center;
+  color:var(--deep);
+  font-size:2rem;
+  margin:38px 0 17px;
+}
+
+.section-note {
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.card {
+  background:#fffdf8;
+  border:4px solid white;
+  border-radius:24px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 8px 20px #49356f17;
+}
+
+.card .emoji {
+  font-size:2.8rem;
+}
+
+.card h3 {
+  color:var(--deep);
+}
+
+.card p {
+  line-height:1.5;
+  min-height:48px;
+}
+
+.panel {
+  margin-top:25px;
+  background:#fffdf4;
+  border:3px dashed #c4a9e1;
+  border-radius:23px;
+  padding:22px;
+}
+
+.panel h3 {
+  color:var(--deep);
+}
+
+.video-space,.game-space,.more-space {
+  min-height:100px;
+  background:#f4edff;
+  border-radius:16px;
+  padding:22px;
+  text-align:center;
+  display:grid;
+  place-items:center;
+  line-height:1.5;
+}
+
+.quiz-box {
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  max-width:600px;
+  margin:auto;
+  text-align:center;
+}
+
+.quiz-options {
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:15px 0;
+}
+
+.quiz-options button {
+  border:2px solid #dfd0f2;
+  background:#f7f0ff;
+  color:#513d72;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+#quizResult {
+  font-weight:bold;
+  min-height:28px;
+  color:#4e8c69;
+}
+
+.music {
+  position:fixed;
+  left:16px;
+  bottom:16px;
+  z-index:8;
+  border:0;
+  border-radius:25px;
+  padding:11px 15px;
+  background:white;
+  color:#604782;
+  font-weight:bold;
+}
+
+.helper {
+  position:fixed;
+  right:17px;
+  bottom:16px;
+  z-index:9;
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  background:#e879a7;
+  color:white;
+  font-size:1.6rem;
+}
+
+.chat {
+  display:none;
+  position:fixed;
+  right:18px;
+  bottom:87px;
+  width:min(340px,calc(100vw - 36px));
+  z-index:10;
+  background:white;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 12px 35px #39234a45;
+}
+
+.chat.open { display:block; }
+
+.chat input {
+  width:100%;
+  padding:12px;
+  border:2px solid #e2d5f0;
+  border-radius:12px;
+  margin:5px 0 10px;
+}
+
+.chat-answer {
+  background:#f5efff;
+  border-radius:12px;
+  padding:11px;
+}
+
+footer {
+  text-align:center;
+  padding:35px 15px 95px;
+}
+
+@media(max-width:650px) {
+  .topbar {
+    display:block;
+    text-align:center;
+  }
+
+  .nav {
+    justify-content:center;
+    margin-top:15px;
+  }
+
+  .hero { min-height:620px; }
+  .scene { height:330px; }
+}
+</style>
 </head>
+
 <body>
-  <header class="top">
-    <div class="eyebrow">✨ WELCOME, LITTLE EXPLORERS ✨</div>
-    <div class="rainbow" aria-hidden="true">🌈</div>
-    <h1>Rainbow Adventure</h1>
-    <p class="subtitle">A magical English learning world for Year 1, Year 2 &amp; Year 3!</p>
-  </header>
 
-  <nav aria-label="Main navigation">
-    <a href="#learn">Learn</a>
-    <a href="#video">Videos</a>
-    <a href="#games">Games</a>
-    <a href="#quiz">Quiz</a>
-  </nav>
+<header class="hero" id="home">
 
-  <main>
-    <section class="welcome">
-      <h2>🏰 Hello, Super Learners!</h2>
-      <p>Jom belajar Bahasa Inggeris sambil meneroka dunia fantasi! Pilih aktiviti kegemaran anda dan kumpulkan ilmu baharu setiap hari.</p>
-    </section>
+  <div class="topbar">
+    <div class="brand">🌈 FEELINGS ADVENTURE</div>
 
-    <h2 class="section-title" id="learn">🌟 Choose Your Learning Level</h2>
-    <section class="cards">
-      <article class="card">
-        <div class="emoji">🧸</div><h3>Year 1</h3>
-        <p>Kenali perkataan mudah, warna, nombor dan haiwan.</p>
-        <button onclick="showMessage('Year 1','Ruang aktiviti Year 1 anda boleh dimasukkan di sini.')">Explore Year 1</button>
-      </article>
-      <article class="card">
-        <div class="emoji">🦋</div><h3>Year 2</h3>
-        <p>Bina ayat ringkas dan tambah vocabulary.</p>
-        <button onclick="showMessage('Year 2','Ruang aktiviti Year 2 anda boleh dimasukkan di sini.')">Explore Year 2</button>
-      </article>
-      <article class="card">
-        <div class="emoji">🦄</div><h3>Year 3</h3>
-        <p>Latih reading, grammar dan penulisan mudah.</p>
-        <button onclick="showMessage('Year 3','Ruang aktiviti Year 3 anda boleh dimasukkan di sini.')">Explore Year 3</button>
-      </article>
-    </section>
+    <nav class="nav">
+      <a href="#levels">Learn</a>
+      <a href="#videos">Videos</a>
+      <a href="#games">Games</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </div>
 
-    <h2 class="section-title">🎒 Explore Activities</h2>
-    <section class="cards" id="games">
-      <article class="card">
-        <div class="emoji">🎮</div><h3>Mini Games</h3>
-        <p>Ruang untuk masukkan permainan pembelajaran.</p>
-        <button onclick="showMessage('Mini Games','LETak pautan atau kod permainan anda di bahagian ini nanti.')">Open Games</button>
-      </article>
-      <article class="card" id="quiz">
-        <div class="emoji">📝</div><h3>Fun Quiz</h3>
-        <p>Cuba soalan mudah dan uji kefahaman anda.</p>
-        <button onclick="startQuiz()">Start Quiz</button>
-      </article>
-      <article class="card" id="video">
-        <div class="emoji">🎬</div><h3>Learning Videos</h3>
-        <p>Ruang untuk video lagu, cerita dan pembelajaran.</p>
-        <button onclick="document.getElementById('video-slot').scrollIntoView({behavior:'smooth'})">Watch Videos</button>
-      </article>
-    </section>
+  <div class="hero-copy">
+    <div class="eyebrow">
+      ✨ WELCOME, LITTLE EXPLORERS! ✨
+    </div>
 
-    <section class="slot" id="video-slot">
-      <h3>🎬 Video Corner</h3>
-      <div class="placeholder">Letakkan video pembelajaran di sini nanti.<br>Contoh: YouTube embed atau video MP4.</div>
-    </section>
+    <h1>The Emotion<br>Explorers</h1>
 
-    <section class="slot">
-      <h3>🕹️ Game &amp; Interactive Activities</h3>
-      <div class="placeholder">RUANG UNTUK CODING GAME<br>Masukkan pautan atau kandungan permainan di bahagian ini.</div>
-    </section>
+    <p>
+      Learn English, explore feelings and have fun
+      on a magical adventure!
+    </p>
 
-    <section class="slot">
-      <h3>📚 More Learning Materials</h3>
-      <div class="placeholder">RUANG UNTUK NOTA, WORKSHEET, AUDIO, CERITA DAN AKTIVITI TAMBAHAN.</div>
-    </section>
-  </main>
+    <div class="hero-buttons">
+      <a class="btn" href="#levels">Start Exploring</a>
+      <a class="btn yellow" href="#activities">See Activities</a>
+    </div>
+  </div>
 
-  <button class="music" onclick="toggleMusic()" id="musicButton">🎵 Music: Off</button>
-  <audio id="bgMusic" loop>
-    <!-- Masukkan pautan fail muzik MP3 anda pada src apabila sudah ada. -->
-  </audio>
+  <!-- MAGIC WORLD BACKGROUND -->
+  <svg class="scene" viewBox="0 0 1440 430"
+       preserveAspectRatio="xMidYMax slice">
 
-  <section class="chat" id="chatBox" aria-label="AI helper">
-    <h3>🤖 Hello! I'm Buddy</h3>
-    <p>Buddy ialah ruang bantuan pembelajaran. Tanya soalan mudah di bawah!</p>
-    <input id="question" type="text" placeholder="Type your question...">
-    <button onclick="askBuddy()">Ask Buddy</button>
-    <p id="answer">Buddy is ready to help you learn! 🌟</p>
+    <defs>
+      <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+        <stop stop-color="#f8c7e8"/>
+        <stop offset="1" stop-color="#8c70c7"/>
+      </linearGradient>
+
+      <linearGradient id="rainbow" x1="0" y1="0" x2="1" y2="0">
+        <stop stop-color="#ff7d91"/>
+        <stop offset=".2" stop-color="#ffbf66"/>
+        <stop offset=".4" stop-color="#fff07c"/>
+        <stop offset=".6" stop-color="#82dba4"/>
+        <stop offset=".8" stop-color="#77c9f3"/>
+        <stop offset="1" stop-color="#b38be8"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Rainbow -->
+    <path d="M555 160 A165 165 0 0 1 885 160"
+          fill="none" stroke="white" stroke-width="25"/>
+
+    <path d="M570 160 A150 150 0 0 1 870 160"
+          fill="none" stroke="url(#rainbow)"
+          stroke-width="20" stroke-linecap="round"/>
+
+    <!-- Green hills -->
+    <path d="M0 270 Q180 210 350 270 T720 260
+             T1100 250 T1440 260 V430 H0Z"
+          fill="#8fd8c2"/>
+
+    <path d="M0 300 Q200 255 390 300 T780 290
+             T1150 285 T1440 300 V430 H0Z"
+          fill="#65bd9d"/>
+
+    <!-- Sea -->
+    <path d="M1110 275 Q1260 245 1440 280 V430 H1110Z"
+          fill="#68c9e5"/>
+
+    <path d="M1110 310 Q1250 290 1440 312"
+          fill="none" stroke="white" stroke-width="5"/>
+
+    <!-- Castle -->
+    <g transform="translate(635 105)">
+      <path d="M25 120V50H55V120
+               M95 120V25H130V120
+               M160 120V50H190V120"
+            fill="#f6c5a8" stroke="#9a6e9e" stroke-width="4"/>
+
+      <path d="M12 53L40 10L68 53Z
+               M84 30L112 -18L141 30Z
+               M148 53L176 10L204 53Z"
+            fill="#8e6cc0" stroke="#6e559e" stroke-width="4"/>
+
+      <path d="M55 120V72Q112 35 160 72V120Z"
+            fill="#ffe3b7" stroke="#9a6e9e" stroke-width="4"/>
+
+      <path d="M95 120V91Q112 65 130 91V120"
+            fill="#7652a8"/>
+
+      <g fill="#8dd7ef">
+        <rect x="35" y="65" width="12" height="19" rx="6"/>
+        <rect x="106" y="42" width="12" height="19" rx="6"/>
+        <rect x="168" y="65" width="12" height="19" rx="6"/>
+      </g>
+
+      <path d="M112 -18V-42" stroke="#7652a8" stroke-width="4"/>
+      <path d="M114 -40L140 -32L114 -24Z" fill="#f28db8"/>
+    </g>
+
+    <!-- Colourful stone road -->
+    <path d="M625 245 Q675 285 650 325
+             Q600 365 500 430 H940
+             Q840 365 790 325
+             Q765 285 815 245Z"
+          fill="url(#path)" stroke="#fff0f4" stroke-width="7"/>
+
+    <g stroke="white" stroke-width="4">
+      <path d="M680 255l-24 18 37 12 22-20z" fill="#ffe17d"/>
+      <path d="M755 255l24 18-37 12-22-20z" fill="#8be0b4"/>
+      <path d="M655 302l-32 18 42 15 29-20z" fill="#79d3ed"/>
+      <path d="M785 302l32 18-42 15-29-20z" fill="#ff9fbd"/>
+      <path d="M610 354l-42 23 58 16 38-25z" fill="#ffe17d"/>
+      <path d="M830 354l42 23-58 16-38-25z" fill="#8be0b4"/>
+    </g>
+
+    <!-- Left tree -->
+    <path d="M100 430Q125 320 115 220"
+          stroke="#79513f" stroke-width="27"
+          fill="none" stroke-linecap="round"/>
+
+    <path d="M115 270L65 205M118 300L175 220"
+          stroke="#79513f" stroke-width="14" fill="none"/>
+
+    <g fill="#8c55a9">
+      <circle cx="70" cy="185" r="65"/>
+      <circle cx="135" cy="165" r="75"/>
+      <circle cx="190" cy="210" r="58"/>
+    </g>
+
+    <g fill="#bd78c7">
+      <circle cx="40" cy="150" r="30"/>
+      <circle cx="150" cy="110" r="28"/>
+      <circle cx="205" cy="175" r="25"/>
+    </g>
+
+    <!-- Right tree -->
+    <path d="M1340 430Q1315 320 1325 220"
+          stroke="#79513f" stroke-width="27"
+          fill="none" stroke-linecap="round"/>
+
+    <path d="M1320 270L1370 205M1318 300L1260 220"
+          stroke="#79513f" stroke-width="14" fill="none"/>
+
+    <g fill="#8754a5">
+      <circle cx="1370" cy="185" r="65"/>
+      <circle cx="1305" cy="165" r="75"/>
+      <circle cx="1250" cy="210" r="58"/>
+    </g>
+
+    <g fill="#c879c6">
+      <circle cx="1400" cy="150" r="30"/>
+      <circle cx="1290" cy="110" r="28"/>
+      <circle cx="1240" cy="175" r="25"/>
+    </g>
+
+    <!-- Flowers and stars -->
+    <g fill="#ffe27c">
+      <circle cx="280" cy="345" r="8"/>
+      <circle cx="265" cy="345" r="8"/>
+      <circle cx="273" cy="332" r="8"/>
+      <circle cx="273" cy="358" r="8"/>
+    </g>
+
+    <g fill="white">
+      <circle cx="480" cy="190" r="4"/>
+      <circle cx="1000" cy="185" r="4"/>
+      <circle cx="340" cy="100" r="5"/>
+      <circle cx="1080" cy="120" r="5"/>
+    </g>
+
+  </svg>
+</header>
+
+<main>
+
+  <section class="welcome">
+    <h2>🏰 Hello, Little Explorers!</h2>
+
+    <p>
+      Are you ready for a fun adventure?
+      Learn new English words, talk about feelings
+      and play learning games. Let's explore together!
+    </p>
   </section>
-  <button class="helper" onclick="document.getElementById('chatBox').classList.toggle('show')" aria-label="Open AI helper">🤖</button>
 
-  <footer>Made with 💖 for our little English explorers · Rainbow Adventure</footer>
+  <h2 class="section-title" id="levels">
+    🌟 Choose Your Year
+  </h2>
 
-  <script>
-    function showMessage(title, message) {
-      alert(title + "\\n\\n" + message);
-    }
-    function startQuiz() {
-      const answer = prompt("What is the English word for KUCING?\\nA. Dog\\nB. Cat\\nC. Bird");
-      if (answer && answer.trim().toLowerCase() === "b" || answer && answer.trim().toLowerCase() === "cat") {
-        alert("Correct! ⭐ Well done!");
-      } else if (answer !== null) {
-        alert("Good try! The answer is B. Cat. 🐱");
-      }
-    }
-    function askBuddy() {
-      const q = document.getElementById("question").value.trim().toLowerCase();
-      let reply = "Good question! Keep practising your English. 🌈";
-      if (!q) reply = "Please type a question first. 😊";
-      else if (q.includes("hello") || q.includes("hi")) reply = "Hello, little explorer! How are you today?";
-      else if (q.includes("cat")) reply = "A cat is a small animal. Cat means kucing. 🐱";
-      else if (q.includes("thank")) reply = "You're welcome! Keep learning! ⭐";
-      else if (q.includes("colour") || q.includes("color")) reply = "Rainbow colours include red, orange, yellow, green, blue and purple. 🌈";
-      document.getElementById("answer").textContent = reply;
-    }
-    function toggleMusic() {
-      const audio = document.getElementById("bgMusic");
-      const button = document.getElementById("musicButton");
-      if (!audio.src) {
-        alert("Untuk mainkan muzik, masukkan pautan fail MP3 pada bahagian audio dalam index.html.");
-        return;
-      }
-      if (audio.paused) {
-        audio.play();
-        button.textContent = "🎵 Music: On";
-      } else {
-        audio.pause();
-        button.textContent = "🎵 Music: Off";
-      }
-    }
-  </script>
+  <p class="section-note">
+    Pick your class to start learning.
+  </p>
+
+  <section class="cards">
+
+    <article class="card">
+      <div class="emoji">🐻</div>
+      <h3>Year 1</h3>
+      <p>Learn easy words, colours, numbers, animals and feelings.</p>
+      <a class="btn" href="#activities">Explore Year 1</a>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🦋</div>
+      <h3>Year 2</h3>
+      <p>Learn more words and make short, simple sentences.</p>
+      <a class="btn" href="#activities">Explore Year 2</a>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🦄</div>
+      <h3>Year 3</h3>
+      <p>Practise reading, simple grammar and writing.</p>
+      <a class="btn" href="#activities">Explore Year 3</a>
+    </article>
+
+  </section>
+
+  <h2 class="section-title" id="activities">
+    🎒 Let's Learn and Play!
+  </h2>
+
+  <section class="cards" id="games">
+
+    <article class="card">
+      <div class="emoji">🎮</div>
+      <h3>Fun Games</h3>
+      <p>Play games and practise your English.</p>
+      <button class="btn"
+        onclick="document.getElementById('game-space').scrollIntoView({behavior:'smooth'})">
+        Open Games
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="emoji">📝</div>
+      <h3>Quick Quiz</h3>
+      <p>Try a question and see what you know.</p>
+      <a class="btn" href="#quiz">Start Quiz</a>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🎬</div>
+      <h3>Learning Videos</h3>
+      <p>Watch songs, stories and English lessons.</p>
+      <a class="btn" href="#videos">Watch Videos</a>
+    </article>
+
+  </section>
+
+  <section class="panel" id="videos">
+    <h3>🎬 Video Corner</h3>
+    <div class="video-space">
+      Your learning videos will go here.
+      <br>
+      Add a YouTube video or an MP4 video when you are ready.
+    </div>
+  </section>
+
+  <section class="panel" id="game-space">
+    <h3>🕹️ Game Corner</h3>
+    <div class="game-space">
+      Your learning games will go here.
+      <br>
+      Add your game link or game code in this space.
+    </div>
+  </section>
+
+  <section class="panel" id="quiz">
+    <h3>⭐ Quick English Quiz</h3>
+
+    <div class="quiz-box">
+      <p><strong>What is the English word for "kucing"?</strong></p>
+
+      <div class="quiz-options">
+        <button onclick="checkAnswer('Dog')">Dog</button>
+        <button onclick="checkAnswer('Cat')">Cat</button>
+        <button onclick="checkAnswer('Bird')">Bird</button>
+      </div>
+
+      <div id="quizResult">Choose your answer!</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>📚 More Learning Fun</h3>
+
+    <div class="more-space">
+      Add worksheets, storybooks, songs, audio and more activities here.
+    </div>
+  </section>
+
+</main>
+
+<button class="music" onclick="toggleMusic()" id="musicButton">
+  🎵 Music: Off
+</button>
+
+<audio id="bgMusic" loop>
+  <!-- Add your MP3 music link here when you have one. -->
+</audio>
+
+<section class="chat" id="chatBox">
+
+  <h3>🤖 Hi! I'm Buddy</h3>
+
+  <p>
+    Ask me a simple English question.
+    Let's learn together!
+  </p>
+
+  <input id="question"
+         type="text"
+         placeholder="Type your question here...">
+
+  <button class="btn" onclick="askBuddy()">
+    Ask Buddy
+  </button>
+
+  <p class="chat-answer" id="answer">
+    Buddy is ready to help you! 🌟
+  </p>
+
+  <small>This is a simple demo helper, not a live AI chat yet.</small>
+
+</section>
+
+<button class="helper"
+  onclick="document.getElementById('chatBox').classList.toggle('open')">
+  🤖
+</button>
+
+<footer>
+  Made with 💖 for our little English explorers · Feelings Adventure
+</footer>
+
+<script>
+
+function checkAnswer(answer) {
+  const result = document.getElementById('quizResult');
+
+  if(answer === 'Cat') {
+    result.textContent = 'Correct! Well done! ⭐';
+  } else {
+    result.textContent = 'Good try! The answer is Cat. Try again! 🐱';
+  }
+}
+
+function askBuddy() {
+
+  const q = document.getElementById('question')
+    .value.trim().toLowerCase();
+
+  let reply = "Good question! Keep trying and learning. 🌈";
+
+  if(!q) {
+    reply = "Please type a question first. 😊";
+  }
+
+  else if(q.includes('hello') || q.includes('hi')) {
+    reply = "Hello, little explorer! How are you today?";
+  }
+
+  else if(q.includes('happy')) {
+    reply = "Happy means you feel good and smile. 😊";
+  }
+
+  else if(q.includes('sad')) {
+    reply = "Sad means you feel unhappy. It is okay to feel sad sometimes. 💙";
+  }
+
+  else if(q.includes('angry')) {
+    reply = "Angry means you feel mad. Take a slow, deep breath. 🌼";
+  }
+
+  else if(q.includes('cat')) {
+    reply = "A cat is an animal. Cat means kucing. 🐱";
+  }
+
+  else if(q.includes('thank')) {
+    reply = "You are welcome! You are doing great! ⭐";
+  }
+
+  else if(q.includes('colour') || q.includes('color')) {
+    reply = "A rainbow has red, orange, yellow, green, blue and purple. 🌈";
+  }
+
+  document.getElementById('answer').textContent = reply;
+}
+
+function toggleMusic() {
+
+  const audio = document.getElementById('bgMusic');
+  const button = document.getElementById('musicButton');
+
+  if(!audio.getAttribute('src')) {
+    alert('Add a music file link to the audio tag in index.html first.');
+    return;
+  }
+
+  if(audio.paused) {
+    audio.play();
+    button.textContent = '🎵 Music: On';
+  } else {
+    audio.pause();
+    button.textContent = '🎵 Music: Off';
+  }
+}
+
+</script>
+
 </body>
 </html>
