@@ -251,9 +251,32 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
   <div class="year-block" id="year1">
     <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Introduction</h3></div>
     <div class="placeholder">🎬 YEAR 1 VIDEO SLOT<br>Replace this placeholder with your Year 1 video.</div>
-    <!-- YEAR 1 VIDEO EMBED SLOT:
-    <iframe class="media-frame" src="PASTE_YEAR_1_VIDEO_EMBED_LINK" allowfullscreen></iframe>
-    -->
+    
+<div class="video-container">
+  <video controls playsinline preload="metadata">
+    <source src="videos/emotion-video.mp4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+</div>
+
+<style>
+.video-container {
+  width: 100%;
+  max-width: 850px;
+  aspect-ratio: 16 / 9;
+  margin: 20px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #111;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+</style>
+
   </div>
 
   <div class="year-block" id="year2">
