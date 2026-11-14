@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feelings Adventure | The Emotion Explorers</title>
+  <style>
+    :root {
+      --purple:#7651b5; --pink:#ff8eb7; --blue:#79c9f5;
+      --yellow:#ffe58a; --ink:#44345f; --cream:#fffaf0;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; font-family:"Trebuchet MS",Arial,sans-serif; color:var(--ink);
+      background:linear-gradient(180deg,#bcecff 0%,#f8dafa 48%,#fff0c7 100%);
+      min-height:100vh;
+    }
+    .top {
+      text-align:center; padding:34px 18px 26px;
+      background:linear-gradient(180deg,rgba(255,255,255,.42),transparent);
+    }
+    .top .eyebrow { font-weight:800; letter-spacing:2px; color:#7651b5; }
+    h1 { font-size:clamp(2rem,6vw,4rem); margin:8px 0; color:#6746a5; text-shadow:2px 3px #fff; }
+    .subtitle { font-size:1.08rem; margin:0 auto; max-width:650px; }
+    .rainbow { font-size:clamp(2.4rem,8vw,5rem); line-height:1.2; }
+    nav { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; padding:0 15px 22px; }
+    nav a {
+      color:#fff; text-decoration:none; font-weight:800; background:var(--purple);
+      padding:11px 17px; border-radius:30px; box-shadow:0 4px 0 #51388a;
+    }
+    nav a:nth-child(2){background:#e879a7;box-shadow:0 4px 0 #b94f7d}
+    nav a:nth-child(3){background:#4e9dc8;box-shadow:0 4px 0 #33779c}
+    nav a:nth-child(4){background:#d69a32;box-shadow:0 4px 0 #a66f1b}
+    main { width:min(1100px,92%); margin:auto; }
+    .welcome {
+      background:rgba(255,255,255,.83); border:3px solid #fff; border-radius:28px;
+      padding:24px; text-align:center; box-shadow:0 10px 25px #7651b522;
+    }
+    .welcome h2 { margin:0 0 8px; font-size:1.7rem; }
+    .welcome p { margin:0; line-height:1.6; }
+    .section-title { text-align:center; margin:35px 0 16px; font-size:1.8rem; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:17px; }
+    .card {
+      background:#fff; border-radius:23px; padding:22px; text-align:center;
+      border:3px solid #fff; box-shadow:0 8px 18px #7651b51c;
+    }
+    .card .emoji { font-size:2.8rem; }
+    .card h3 { margin:8px 0; }
+    .card p { line-height:1.5; min-height:48px; }
+    button {
+      border:0; border-radius:24px; padding:11px 17px; color:#fff; background:var(--purple);
+      font-weight:800; font-size:1rem; cursor:pointer;
+    }
+    button:hover { filter:brightness(1.08); transform:translateY(-1px); }
+    .slot {
+      margin-top:30px; padding:22px; border:3px dashed #b69add; border-radius:22px;
+      background:rgba(255,255,255,.62);
+    }
+    .slot h3 { margin-top:0; }
+    .placeholder {
+      background:#fff; border-radius:15px; padding:22px; text-align:center;
+      color:#806d9d; min-height:90px; display:grid; place-items:center;
+    }
+    .music { position:fixed; left:16px; bottom:16px; z-index:5; box-shadow:0 4px 12px #0002; }
+    .helper {
+      position:fixed; right:18px; bottom:18px; z-index:8; width:58px; height:58px;
+      border-radius:50%; font-size:1.6rem; background:#e879a7; box-shadow:0 5px 0 #b94f7d;
+    }
+    .chat {
+      display:none; position:fixed; right:18px; bottom:88px; width:min(330px,calc(100vw - 36px));
+      background:white; border-radius:20px; padding:17px; box-shadow:0 10px 35px #39234a44; z-index:9;
+    }
+    .chat.show { display:block; }
+    .chat h3 { margin:0 0 8px; }
+    .chat p { line-height:1.45; }
+    .chat input { width:100%; padding:11px; border:2px solid #e4d8f4; border-radius:12px; margin:5px 0 9px; }
+    #answer { background:#f6f0ff; border-radius:12px; padding:10px; min-height:42px; }
+    footer { text-align:center; padding:36px 15px 95px; color:#685780; }
+    @media(max-width:520px) {
+      .top { padding-top:24px; }
+      .welcome { padding:19px; }
+      .music { left:10px; bottom:12px; font-size:.9rem; }
+      .helper { right:10px; bottom:12px; }
+      .chat { right:10px; bottom:82px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="eyebrow">✨ WELCOME, LITTLE EXPLORERS ✨</div>
+    <div class="rainbow" aria-hidden="true">🌈</div>
+    <h1>Feelings Adventure</h1>
+    <p class="subtitle">A magical English learning world for Year 1, Year 2 &amp; Year 3!</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="#learn">Learn</a>
+    <a href="#video">Videos</a>
+    <a href="#games">Games</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+
+  <main>
+    <section class="welcome">
+      <h2>🏰 Hello, Super Learners!</h2>
+      <p>Let’s learn English while exploring a magical world! Choose your favourite activities and discover something new every day.</p>
+    </section>
+
+    <h2 class="section-title" id="learn">🌟 Choose Your Learning Level</h2>
+    <section class="cards">
+      <article class="card">
+        <div class="emoji">🧸</div><h3>Year 1</h3>
+        <p>Learn simple words, colours, numbers and animals.</p>
+        <button onclick="showMessage('Year 1','Year 1 activities can be added here.')">Explore Year 1</button>
+      </article>
+      <article class="card">
+        <div class="emoji">🦋</div><h3>Year 2</h3>
+        <p>Build simple sentences and expand your vocabulary.</p>
+        <button onclick="showMessage('Year 2','Year 2 activities can be added here.')">Explore Year 2</button>
+      </article>
+      <article class="card">
+        <div class="emoji">🦄</div><h3>Year 3</h3>
+        <p>Practise reading, grammar and simple writing.</p>
+        <button onclick="showMessage('Year 3','Year 3 activities can be added here.')">Explore Year 3</button>
+      </article>
+    </section>
+
+    <h2 class="section-title">🎒 Explore Activities</h2>
+    <section class="cards" id="games">
+      <article class="card">
+        <div class="emoji">🎮</div><h3>Mini Games</h3>
+        <p>A space for learning games.</p>
+        <button onclick="showMessage('Mini Games','Add your game link or game code here.')">Open Games</button>
+      </article>
+      <article class="card" id="quiz">
+        <div class="emoji">📝</div><h3>Fun Quiz</h3>
+        <p>Try some simple questions and test your understanding.</p>
+        <button onclick="startQuiz()">Start Quiz</button>
+      </article>
+      <article class="card" id="video">
+        <div class="emoji">🎬</div><h3>Learning Videos</h3>
+        <p>A space for learning songs, stories and educational videos.</p>
+        <button onclick="document.getElementById('video-slot').scrollIntoView({behavior:'smooth'})">Watch Videos</button>
+      </article>
+    </section>
+
+    <section class="slot" id="video-slot">
+      <h3>🎬 Video Corner</h3>
+      <div class="placeholder">Add your learning videos here.<br>Examples: YouTube embeds or MP4 videos.</div>
+    </section>
+
+    <section class="slot">
+      <h3>🕹️ Game &amp; Interactive Activities</h3>
+      <div class="placeholder">SPACE FOR GAME CODE<br>Add your game link or game content here.</div>
+    </section>
+
+    <section class="slot">
+      <h3>📚 More Learning Materials</h3>
+      <div class="placeholder">SPACE FOR NOTES, WORKSHEETS, AUDIO, STORIES AND ADDITIONAL ACTIVITIES.</div>
+    </section>
+  </main>
+
+  <button class="music" onclick="toggleMusic()" id="musicButton">🎵 Music: Off</button>
+  <audio id="bgMusic" loop>
+    <!-- Add your MP3 music file link to the src attribute when it is available. -->
+  </audio>
+
+  <section class="chat" id="chatBox" aria-label="AI helper">
+    <h3>🤖 Hello! I'm Buddy</h3>
+    <p>Buddy is your learning helper. Ask a simple question below!</p>
+    <input id="question" type="text" placeholder="Type your question...">
+    <button onclick="askBuddy()">Ask Buddy</button>
+    <p id="answer">Buddy is ready to help you learn! 🌟</p>
+  </section>
+  <button class="helper" onclick="document.getElementById('chatBox').classList.toggle('show')" aria-label="Open AI helper">🤖</button>
+
+  <footer>Made with 💖 for The Emotion Explorers · Feelings Adventure</footer>
+
+  <script>
+    function showMessage(title, message) {
+      alert(title + "\\n\\n" + message);
+    }
+    function startQuiz() {
+      const answer = prompt("What is the English word for KUCING?\\nA. Dog\\nB. Cat\\nC. Bird");
+      if (answer && answer.trim().toLowerCase() === "b" || answer && answer.trim().toLowerCase() === "cat") {
+        alert("Correct! ⭐ Well done!");
+      } else if (answer !== null) {
+        alert("Good try! The answer is B. Cat. 🐱");
+      }
+    }
+    function askBuddy() {
+      const q = document.getElementById("question").value.trim().toLowerCase();
+      let reply = "Good question! Keep practising your English. 🌈";
+      if (!q) reply = "Please type a question first. 😊";
+      else if (q.includes("hello") || q.includes("hi")) reply = "Hello, little explorer! How are you today?";
+      else if (q.includes("cat")) reply = "A cat is a small animal. Cat means kucing. 🐱";
+      else if (q.includes("thank")) reply = "You're welcome! Keep learning! ⭐";
+      else if (q.includes("colour") || q.includes("color")) reply = "Rainbow colours include red, orange, yellow, green, blue and purple. 🌈";
+      document.getElementById("answer").textContent = reply;
+    }
+    function toggleMusic() {
+      const audio = document.getElementById("bgMusic");
+      const button = document.getElementById("musicButton");
+      if (!audio.src) {
+        alert("To play music, add an MP3 file link to the audio section in index.html.");
+        return;
+      }
+      if (audio.paused) {
+        audio.play();
+        button.textContent = "🎵 Music: On";
+      } else {
+        audio.pause();
+        button.textContent = "🎵 Music: Off";
+      }
+    }
+  </script>
+</body>
+</html>
