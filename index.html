@@ -182,6 +182,54 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
   .pdf-frame { height:350px; }
   .music-control { left:10px; bottom:12px; padding:10px 15px; font-size:13px; }
 }
+
+.zep-embed {
+  width: 100% !important;
+  max-width: 1100px;
+  height: 750px !important;
+  margin: 25px auto !important;
+  display: block;
+  overflow: hidden;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(80, 60, 120, 0.12);
+}
+
+.zep-embed iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100%;
+  border: none !important;
+}
+
+.zep-fullscreen {
+  display: block;
+  margin: 15px auto 35px;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #9b8bea, #e6a9d8);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.zep-embed iframe:fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  border-radius: 0;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .zep-embed {
+    height: 650px !important;
+    border-radius: 15px;
+  }
+}
 </style>
 </head>
 
