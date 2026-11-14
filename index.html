@@ -621,6 +621,100 @@ footer {
   overflow: hidden;
   object-fit: cover;
 }
+
+/* ==================================
+   FANTASY DECORATION ANIMATIONS
+   ================================== */
+
+/* Trees gently sway */
+.tree-left {
+  transform-origin: bottom center;
+  animation: treeSway 4s ease-in-out infinite;
+}
+
+.tree-right {
+  transform-origin: bottom center;
+  animation: treeSway 5s ease-in-out infinite reverse;
+}
+
+@keyframes treeSway {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Castles gently float */
+.castle-left {
+  animation: castleFloat 5s ease-in-out infinite;
+}
+
+.castle-right {
+  animation: castleFloat 6s ease-in-out infinite reverse;
+}
+
+@keyframes castleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Stars twinkle */
+.star-one {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.star-two {
+  animation: twinkle 2.8s ease-in-out infinite 0.5s;
+}
+
+.star-three {
+  animation: twinkle 3.2s ease-in-out infinite 1s;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(20deg);
+  }
+}
+
+/* Sparkles gently float */
+.fantasy-item {
+  animation: sparkleFloat 4s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Disable animations for reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .tree-left,
+  .tree-right,
+  .castle-left,
+  .castle-right,
+  .star-one,
+  .star-two,
+  .star-three,
+  .fantasy-item {
+    animation: none !important;
+  }
+}
 </style>
     
 
