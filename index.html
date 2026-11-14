@@ -684,14 +684,15 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
 </main>
 
 
+
 <!-- BACKGROUND MUSIC -->
-<audio id="websiteMusic" loop preload="auto" autoplay>
-  <source src="BG-github.m4a" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto" autoplay>
+  <source src="BG%20github.m4a" type="audio/mp4">
+  Your browser does not support audio playback.
 </audio>
 
-<button class="music-control" id="musicButton"
-        type="button" onclick="toggleWebsiteMusic()">
-  🎵 Starting Music...
+<button id="musicButton" class="music-control" type="button">
+  ♫ Play Music
 </button>
 
 <footer>
@@ -702,100 +703,63 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
 </footer>
 
 <script>
-const music = document.getElementById("websiteMusic");
+const music = document.getElementById("bgMusic");
 const button = document.getElementById("musicButton");
 
-let musicStarted = false;
+music.volume = 0.35;
 
 function updateMusicButton() {
-  if (music.paused) {
-    button.textContent = "🔇 Music OFF";
-  } else {
-    button.textContent = "🎵 Music ON";
-  }
+  button.textContent = music.paused
+    ? "♫ Play Music"
+    : "♫ Pause Music";
 }
 
-// Try to start music automatically when website loads
-async function startWebsiteMusic() {
-  if (musicStarted) return;
-
+// Attempt to play music automatically
+async function startMusic() {
   try {
-    music.volume = 0.35;
     await music.play();
-
-    musicStarted = true;
     updateMusicButton();
-
   } catch (error) {
-    button.textContent = "🔊 Tap to Start Music";
+    button.textContent = "♫ Play Music";
   }
 }
 
-// Start music after the visitor's first interaction
-document.addEventListener("pointerdown", function(event) {
-  if (event.target.closest("#musicButton")) return;
-
-  if (!musicStarted && music.paused) {
-    startWebsiteMusic();
-  }
-}, { once: true });
-
-document.addEventListener("keydown", function() {
-  if (!musicStarted && music.paused) {
-    startWebsiteMusic();
-  }
-}, { once: true });
-
-// Music ON/OFF button
-async function toggleWebsiteMusic() {
+// Music button: Pause or Play
+button.addEventListener("click", async () => {
   if (music.paused) {
     try {
-      music.volume = 0.35;
       await music.play();
-
-      musicStarted = true;
-      updateMusicButton();
-
     } catch (error) {
-      alert("Please check your background music MP3 file.");
+      console.log("Music could not play:", error);
     }
-
   } else {
     music.pause();
-    updateMusicButton();
   }
-}
 
-// Update button when music state changes
+  updateMusicButton();
+});
+
+// Update button whenever music starts or stops
 music.addEventListener("play", updateMusicButton);
 music.addEventListener("pause", updateMusicButton);
 
-// Attempt autoplay when page loads
-startWebsiteMusic();
-</script>
+// If autoplay is blocked, try again after first interaction
+document.addEventListener("pointerdown", (event) => {
+  if (event.target.closest("#musicButton")) return;
 
+  if (music.paused) {
+    startMusic();
+  }
+}, { once: true });
 
-<audio id="bgMusic" loop>
-  <source src="BG github.m4a" type="audio/mp4">
-</audio>
+document.addEventListener("keydown", () => {
+  if (music.paused) {
+    startMusic();
+  }
+}, { once: true });
 
-<button id="musicButton" class="music-button">
-  ♫ Play Music
-</button>
-
-<script>
-  const music = document.getElementById("bgMusic");
-  const button = document.getElementById("musicButton");
-
-  button.addEventListener("click", () => {
-    if (music.paused) {
-      music.play();
-      button.textContent = "♫ Pause Music";
-    } else {
-      music.pause();
-      button.textContent = "♫ Play Music";
-    }
-  });
+// Start automatically when website loads
+startMusic();
 </script>
 </body>
 </html>
