@@ -517,5 +517,28 @@ async function toggleWebsiteMusic() {
 }
 </script>
 
+
+<audio id="bgMusic" loop>
+  <source src="BG github.m4a" type="audio/mp4">
+</audio>
+
+<button id="musicButton" class="music-button">
+  ♫ Play Music
+</button>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  const button = document.getElementById("musicButton");
+
+  button.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      button.textContent = "♫ Pause Music";
+    } else {
+      music.pause();
+      button.textContent = "♫ Play Music";
+    }
+  });
+</script>
 </body>
 </html>
