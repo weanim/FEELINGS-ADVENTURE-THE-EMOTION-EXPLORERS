@@ -497,9 +497,19 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
 
   <div class="year-block">
     <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Games</h3></div>
-    <div class="placeholder">🎮 YEAR 1 GAME SLOT<br>Insert your Year 1 game embed code here.</div>
-    <!-- YEAR 1 GAME EMBED SLOT -->
-  </div>
+<div class="game-frame">
+  <iframe
+    id="year1Game"
+    src="Year%201%20Final.html"
+    title="Year 1 Emotion Island"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<button class="game-fullscreen"
+  onclick="document.getElementById('year1Game').requestFullscreen()">
+  ⛶ Play Full Screen
+</button>
 
   <div class="year-block">
     <div class="year-heading"><span class="year-icon">🦋</span><h3>Year 2 Games</h3></div>
