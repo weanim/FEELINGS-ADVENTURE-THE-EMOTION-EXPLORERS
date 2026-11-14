@@ -477,10 +477,7 @@ footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1
 
 </main>
 
-<!-- BACKGROUND MUSIC
-     Upload your MP3 into the same GitHub repository.
-     Change website-sound.mp3 to your exact filename.
--->
+
 <audio id="websiteMusic" loop preload="none">
   <source src="website-sound.mp3" type="audio/mpeg">
 </audio>
@@ -506,10 +503,6 @@ async function toggleWebsiteMusic() {
     try {
       await music.play();
       button.textContent = "🎵 Music ON";
-    } catch (error) {
-      button.textContent = "🔇 Music OFF";
-      alert("Please check that your MP3 file is uploaded and the filename is correct.");
-    }
   } else {
     music.pause();
     button.textContent = "🔇 Music OFF";
