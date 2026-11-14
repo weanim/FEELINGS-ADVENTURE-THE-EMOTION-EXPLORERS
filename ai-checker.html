@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#edf0ff">
+<title>Emotion Island | Worksheet Answer Checker</title>
+<style>
+:root{--ink:#282642;--muted:#6e6d86;--purple:#7567d8;--blue:#6794e8;--pink:#e99bc8;--line:#e7e5f2}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(135deg,#e4f2ff,#eee9ff 52%,#ffe9f3)}
+.wrap{max-width:1050px;margin:auto;padding:22px 16px 50px}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.brand{font-weight:850;letter-spacing:-.03em}
+.back{color:#5e56a7;text-decoration:none;background:#ffffffb8;border:1px solid #fff;border-radius:99px;padding:9px 14px;font-size:13px;font-weight:700}
+.hero{text-align:center;padding:20px 8px 26px}
+.tag{display:inline-block;background:#fff;color:#655bb5;border-radius:99px;padding:7px 13px;font-size:11px;font-weight:800;letter-spacing:.1em}
+h1{font-size:clamp(30px,5vw,46px);letter-spacing:-.045em;margin:14px 0 8px}
+.hero p{max-width:680px;margin:auto;color:var(--muted);line-height:1.6;font-size:14px}
+.card{background:#ffffffdf;border:1px solid white;border-radius:22px;padding:23px;box-shadow:0 14px 38px #57518b12;margin-bottom:18px}
+h2{font-size:19px;margin:0 0 7px}
+.desc{font-size:13px;color:var(--muted);line-height:1.55;margin:0 0 17px}
+label{display:block;font-size:12px;font-weight:750;margin:14px 0 6px}
+select,input[type=text]{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;font:inherit;font-size:14px;background:#fff;color:var(--ink)}
+select:focus,input:focus{outline:2px solid #c9c1ff;outline-offset:1px}
+.question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.question{background:#faf9ff;border:1px solid var(--line);border-radius:14px;padding:13px}
+.question label{margin:0 0 7px;font-size:13px}
+.question small{display:block;color:var(--muted);font-size:11px;line-height:1.4;margin-bottom:8px}
+button,.primary-link{display:inline-block;margin-top:16px;padding:13px 20px;border:0;border-radius:12px;background:linear-gradient(100deg,var(--blue),var(--purple),#a27bdc);color:white;font:inherit;font-size:13px;font-weight:800;cursor:pointer;text-decoration:none}
+button:hover,.primary-link:hover{filter:brightness(1.04)}
+.result{display:none;margin-top:16px;padding:16px;border-radius:14px;background:#f8f7ff;border:1px solid var(--line)}
+.score{font-size:25px;font-weight:850;color:#5e56a7;margin:0 0 8px}
+.result-list{display:grid;gap:8px}
+.result-item{font-size:13px;line-height:1.5;padding:9px 11px;border-radius:10px;background:white}
+.correct{border-left:4px solid #55a878}
+.incorrect{border-left:4px solid #df8a8a}
+.upload{border:2px dashed #c8c2ed;border-radius:16px;background:#faf9ff;padding:22px 12px;text-align:center;cursor:pointer}
+.upload:hover{background:#f0efff;border-color:var(--purple)}
+.upload b{display:block;font-size:13px}
+.upload span{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+input[type=file]{display:none}
+.fileinfo,.preview,.status{display:none;margin-top:11px;padding:11px;border-radius:11px;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.fileinfo{background:#f1efff;color:#514b91}
+.preview{border:1px solid var(--line);background:white}
+.preview img{display:block;max-width:100%;max-height:260px;margin:auto}
+.preview iframe{width:100%;height:260px;border:0}
+.status{display:block;background:#fff6e7;color:#825d22}
+.notice{padding:12px 14px;border-radius:12px;background:#fff6e7;color:#76551d;font-size:12px;line-height:1.55;margin-top:12px}
+footer{text-align:center;color:#77758f;font-size:11px;margin-top:24px}
+@media(max-width:700px){.question-grid{grid-template-columns:1fr}.card{padding:18px}.wrap{padding:16px 12px 35px}.hero{padding:15px 3px 23px}nav{align-items:flex-start}.back{white-space:nowrap}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="brand">🌈 Emotion Island</div><a class="back" href="index.html#ai-checker">← Back to website</a></nav>
+<header class="hero">
+<div class="tag">YEAR 1 • YEAR 2 • YEAR 3</div>
+<h1>Worksheet Answer Checker</h1>
+<p>Select your year, enter the answers from your completed worksheet, and receive an instant score with question-by-question feedback.</p>
+</header>
+
+<section class="card">
+<h2>📝 Check Your Answers</h2>
+<p class="desc">Choose the year that matches your worksheet. Answer all five questions using the format stated in your worksheet.</p>
+<label for="year">Select your year</label>
+<select id="year">
+<option value="">Choose Year 1, Year 2 or Year 3</option>
+<option value="1">Year 1 – Recognising feelings</option>
+<option value="2">Year 2 – Describing feelings</option>
+<option value="3">Year 3 – Explaining feelings and reasons</option>
+</select>
+<div id="questions" class="question-grid" style="margin-top:15px"></div>
+<button id="check" type="button" disabled>Check My Answers</button>
+<div id="result" class="result" aria-live="polite"></div>
+</section>
+
+<section class="card">
+<h2>📷 Worksheet Upload (Optional)</h2>
+<p class="desc">You may upload a photo or PDF to keep a copy visible while entering your answers.</p>
+<label class="upload" for="file"><b>Choose a worksheet photo or PDF</b><span>PDF, JPG or PNG • Maximum 10 MB</span></label>
+<input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+<div id="fileinfo" class="fileinfo"></div>
+<div id="preview" class="preview"></div>
+<div class="notice"><strong>Important:</strong> This upload area only previews the file. It does not read handwriting or automatically mark an uploaded image/PDF. Automatic AI marking of uploaded work needs a secure AI backend. The answer-entry checker above is working and marks answers using the teacher answer key.</div>
+</section>
+<footer>Emotion Island • Worksheet Answer Checker</footer>
+</div>
+
+<script>
+const answerKey = {
+  "1": [
+    {answer:"a", note:"The correct option is a) happy."},
+    {answer:"right", note:"The statement is correct: the girl is sad."},
+    {answer:"a", note:"The correct option is a) scared."},
+    {answer:"wrong", note:"Mia is happy, not angry."},
+    {answer:"angry", note:"Tom feels angry."}
+  ],
+  "2": [
+    {answer:"a", note:"The correct option is a) He is tired."},
+    {answer:"c", note:"The correct option is c) She is happy."},
+    {answer:"right", note:"The statement is correct: Sam is excited."},
+    {answer:"wrong", note:"Lily is scared, not tired."},
+    {answer:"sad", note:"Anna is sad."}
+  ],
+  "3": [
+    {answer:"a", note:"The correct option is a) he is going on a school trip tomorrow."},
+    {answer:"b", note:"The correct option is b) she must read aloud in front of the class."},
+    {answer:"right", note:"The statement is correct: Ali is surprised."},
+    {answer:"wrong", note:"Ali is disappointed, not excited."},
+    {answer:"worried", note:"Amy is worried because her kitten is missing."}
+  ]
+};
+
+const questionHints = {
+  "1": ["Multiple choice: enter a, b or c.","Right or Wrong: enter Right or Wrong.","Multiple choice: enter a, b or c.","Right or Wrong: enter Right or Wrong.","Short answer: enter ONE word."],
+  "2": ["Multiple choice: enter a, b or c.","Multiple choice: enter a, b or c.","Right or Wrong: enter Right or Wrong.","Right or Wrong: enter Right or Wrong.","Short answer: enter ONE word."],
+  "3": ["Multiple choice: enter a, b or c.","Multiple choice: enter a, b or c.","Right or Wrong: enter Right or Wrong.","Right or Wrong: enter Right or Wrong.","Short answer: enter ONE word."]
+};
+
+const yearSelect = document.getElementById("year");
+const questions = document.getElementById("questions");
+const checkButton = document.getElementById("check");
+const result = document.getElementById("result");
+
+function renderQuestions(){
+  const year = yearSelect.value;
+  result.style.display = "none";
+  questions.innerHTML = "";
+  checkButton.disabled = !year;
+  if(!year) return;
+  for(let i=0;i<5;i++){
+    const box = document.createElement("div");
+    box.className = "question";
+    const label = document.createElement("label");
+    label.htmlFor = "answer"+(i+1);
+    label.textContent = "Question "+(i+1);
+    const hint = document.createElement("small");
+    hint.textContent = questionHints[year][i];
+    const input = document.createElement("input");
+    input.type = "text";
+    input.id = "answer"+(i+1);
+    input.autocomplete = "off";
+    input.placeholder = "Type your answer";
+    input.maxLength = 80;
+    box.append(label,hint,input);
+    questions.appendChild(box);
+  }
+}
+yearSelect.addEventListener("change",renderQuestions);
+
+function normalise(value){
+  return value.trim().toLowerCase().replace(/\s+/g," ");
+}
+checkButton.addEventListener("click",()=>{
+  const year = yearSelect.value;
+  if(!year) return;
+  const entries = answerKey[year];
+  let score = 0;
+  const feedback = [];
+  entries.forEach((item,index)=>{
+    const entered = normalise(document.getElementById("answer"+(index+1)).value);
+    const expected = normalise(item.answer);
+    const isCorrect = entered === expected;
+    if(isCorrect) score++;
+    feedback.push(`<div class="result-item ${isCorrect?"correct":"incorrect"}"><strong>Question ${index+1}: ${isCorrect?"Correct ✓":"Not quite ✗"}</strong><br>${isCorrect?"Well done!":item.note}</div>`);
+  });
+  result.innerHTML = `<p class="score">${score} / 5 marks</p><p style="font-size:13px;margin:0 0 12px">${score===5?"Excellent work! You collected all five stars.":score>=3?"Good effort! Review the answers and try again.":"Keep practising. Read each question carefully and try again."}</p><div class="result-list">${feedback.join("")}</div>`;
+  result.style.display = "block";
+  result.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+
+const fileInput = document.getElementById("file");
+const fileInfo = document.getElementById("fileinfo");
+const preview = document.getElementById("preview");
+fileInput.addEventListener("change",()=>{
+  const file = fileInput.files[0];
+  if(!file) return;
+  const allowed = ["application/pdf","image/jpeg","image/png"];
+  if(!allowed.includes(file.type)){alert("Please upload a PDF, JPG or PNG file.");fileInput.value="";return;}
+  if(file.size>10*1024*1024){alert("The file is larger than 10 MB. Please choose a smaller file.");fileInput.value="";return;}
+  fileInfo.style.display="block";
+  fileInfo.textContent = `Selected: ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`;
+  preview.style.display="block";
+  preview.innerHTML="";
+  const url = URL.createObjectURL(file);
+  if(file.type==="application/pdf"){
+    const frame=document.createElement("iframe");
+    frame.src=url;
+    frame.title="Worksheet PDF preview";
+    preview.appendChild(frame);
+  }else{
+    const img=document.createElement("img");
+    img.src=url;
+    img.alt="Uploaded worksheet preview";
+    preview.appendChild(img);
+  }
+});
+</script>
+</body>
+</html>
