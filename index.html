@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feelings Adventure | The Emotion Explorers</title>
+
+<!-- ==================================================
+     EMOTION HELPER - ONE BOTPRESS CHATBOT FOR THE
+     ENTIRE WEBSITE. Replace this section only if needed.
+================================================== -->
+<link rel="stylesheet" href="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.css">
+<script src="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.js"></script>
+<script>
+fetch("https://vdk-viber-runtime-prod.bot.botpress.host/edge/bots/de628bcc-b01e-4b24-9d09-2808b41b8f6d/config")
+  .then(response => response.json())
+  .then(({ webchat }) => {
+    VdkEdgeWebchat.mount({
+      ...webchat,
+      mode: "bubble",
+      baseUrl: "https://vdk-viber-runtime-prod.bot.botpress.host",
+      botId: "de628bcc-b01e-4b24-9d09-2808b41b8f6d"
+    });
+  })
+  .catch(error => console.error("Emotion Helper could not load:", error));
+</script>
+
+<style>
+:root {
+  --purple: #7651b5;
+  --pink: #ff8eb7;
+  --blue: #79c9f5;
+  --yellow: #ffe58a;
+  --ink: #44345f;
+}
+* { box-sizing: border-box; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(
+    135deg,
+    #c9eaff 0%,
+    #d8d0ff 48%,
+    #f2d0f2 72%,
+    #ffd4e6 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+.top {
+  text-align: center;
+  padding: 38px 18px 25px;
+  background: linear-gradient(180deg,rgba(255,255,255,.45),transparent);
+}
+.eyebrow { font-weight: 800; letter-spacing: 2px; color: var(--purple); }
+.rainbow { font-size: clamp(3rem,8vw,5rem); margin: 8px; }
+h1 {
+  font-size: clamp(2rem,6vw,4rem);
+  margin: 8px 0;
+  color: #6746a5;
+  text-shadow: 2px 3px #fff;
+}
+.subtitle { font-size: 1.08rem; max-width: 650px; margin: auto; line-height: 1.6; }
+nav {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 10px; padding: 12px 15px 25px;
+}
+nav a {
+  color: white; text-decoration: none; font-weight: 800;
+  background: var(--purple); padding: 11px 18px; border-radius: 30px;
+  box-shadow: 0 4px 0 #51388a; transition: .2s;
+}
+nav a:nth-child(2), nav a:nth-child(5) { background:#e879a7; box-shadow:0 4px 0 #b94f7d; }
+nav a:nth-child(3) { background:#4e9dc8; box-shadow:0 4px 0 #33779c; }
+nav a:nth-child(4) { background:#d69a32; box-shadow:0 4px 0 #a66f1b; }
+nav a:hover { transform: translateY(-3px); }
+main { width: min(1100px,92%); margin: auto; }
+.welcome {
+  background: rgba(255,255,255,.85); border:3px solid white;
+  border-radius:28px; padding:25px; text-align:center;
+  box-shadow:0 10px 25px #7651b522; line-height:1.7;
+}
+.section-title {
+  text-align:center; margin:42px 0 20px;
+  font-size:clamp(1.4rem,4vw,1.9rem); color:#6746a5;
+}
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+.card {
+  background:white; border:3px solid white; border-radius:24px;
+  padding:22px; text-align:center; box-shadow:0 8px 18px #7651b51c;
+  transition:.2s;
+}
+.card:hover { transform:translateY(-4px); }
+.emoji { font-size:2.8rem; }
+.card h3 { margin:9px 0; }
+.card p { line-height:1.5; }
+.year-button {
+  display:inline-block; margin-top:10px; text-decoration:none;
+  background:var(--purple); color:white; padding:11px 20px;
+  border-radius:25px; font-weight:bold;
+}
+.learning-section {
+  margin-top:38px; padding:25px; background:rgba(255,255,255,.55);
+  border:3px solid white; border-radius:27px;
+}
+.learning-section > h2 { text-align:center; color:#6746a5; margin-top:0; }
+.section-description { text-align:center; line-height:1.7; }
+.year-block {
+  background:white; border-radius:22px; padding:22px;
+  margin-top:20px; box-shadow:0 6px 18px #7651b51a;
+}
+.year-heading {
+  display:flex; align-items:center; gap:12px;
+  border-bottom:2px dashed #d9c6f0; padding-bottom:12px; margin-bottom:18px;
+}
+.year-heading h3 { color:var(--purple); margin:0; font-size:1.4rem; }
+.year-icon { font-size:2rem; }
+.content-slot {
+  background:#faf7ff; border:2px dashed #b69add;
+  border-radius:17px; padding:20px; margin:15px 0; text-align:center;
+}
+.content-slot h4 { color:#7651b5; margin:0 0 10px; font-size:1.12rem; }
+.content-slot p { line-height:1.6; }
+.placeholder {
+  background:white; border:2px dashed #dfcdec; border-radius:14px;
+  padding:25px 15px; color:#806d9d; line-height:1.6;
+  min-height:110px; display:grid; place-items:center;
+}
+.media-frame {
+  width:100%; aspect-ratio:16/9; border:0;
+  border-radius:14px; background:#f0e9fa; margin-top:12px;
+}
+.pdf-frame {
+  width:100%; height:450px; border:0;
+  border-radius:12px; background:#f0e9fa; margin-top:12px;
+}
+.resource-link {
+  display:inline-block; margin-top:12px; color:white;
+  background:#e879a7; text-decoration:none; padding:10px 18px;
+  border-radius:25px; font-weight:bold;
+}
+.ai-intro {
+  background:linear-gradient(135deg,#f5e9ff,#ffe7f1);
+  border:3px solid white; border-radius:26px; padding:27px;
+  text-align:center; margin-top:38px; box-shadow:0 8px 20px #7651b51c;
+}
+.ai-avatar { font-size:4rem; margin-bottom:8px; }
+.ai-intro h2 { color:#7651b5; }
+.ai-intro p { max-width:700px; margin:10px auto; line-height:1.7; }
+.ai-hint {
+  display:inline-block; background:white; border-radius:18px;
+  padding:12px 18px; margin-top:12px; font-weight:bold; color:#a64e8b;
+}
+.checker-area {
+  background:linear-gradient(135deg,#fff4d6,#f9e7ff);
+  border:2px dashed #d6a6d8; border-radius:17px;
+  padding:20px; margin-top:15px;
+}
+.checker-area h4 { color:#7651b5; margin-top:0; }
+.checker-area p { line-height:1.6; }
+.checker-placeholder {
+  background:white; border:2px dashed #d6a6d8;
+  border-radius:12px; padding:25px 15px; color:#806d9d;
+  line-height:1.6; min-height:130px; display:grid; place-items:center;
+}
+.music-control {
+  position:fixed; left:18px; bottom:18px; z-index:999;
+  background:linear-gradient(135deg,#7651b5,#e879a7);
+  color:white; border:3px solid white; border-radius:30px;
+  padding:12px 20px; font-size:15px; font-weight:bold;
+  box-shadow:0 5px 15px #7651b544; cursor:pointer; transition:.2s;
+}
+.music-control:hover { transform:translateY(-3px); }
+footer { text-align:center; padding:40px 15px 85px; color:#685780; line-height:1.7; }
+@media(max-width:520px) {
+  .top { padding-top:25px; }
+  nav { gap:9px; }
+  nav a { padding:9px 13px; font-size:.9rem; }
+  .learning-section { padding:15px; }
+  .year-block { padding:15px; }
+  .pdf-frame { height:350px; }
+  .music-control { left:10px; bottom:12px; padding:10px 15px; font-size:13px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="eyebrow">✨ WELCOME, LITTLE EXPLORERS ✨</div>
+  <div class="rainbow">🌈</div>
+  <h1>Feelings Adventure</h1>
+  <p class="subtitle">
+    A magical English learning world for Year 1, Year 2 and Year 3!
+    Learn, practise and explore at your own pace.
+  </p>
+</header>
+
+<nav aria-label="Main navigation">
+  <a href="#emotion-helper">Emotion Helper</a>
+  <a href="#videos">Videos</a>
+  <a href="#practice">Practice</a>
+  <a href="#games">Games</a>
+  <a href="#worksheets">Worksheets</a>
+  <a href="#ai-checker">AI Checker</a>
+</nav>
+
+<main>
+
+<section class="welcome">
+  <h2>🏰 Hello, Super Learners!</h2>
+  <p>
+    Welcome to The Emotion Explorers! This is your special learning
+    space where you can watch educational videos, practise English,
+    play interactive games and complete worksheets.
+  </p>
+  <p>Choose your learning year and start your adventure! ⭐</p>
+</section>
+
+<!-- ONE BOTPRESS CHATBOT FOR THE WHOLE WEBSITE -->
+<section class="ai-intro" id="emotion-helper">
+  <div class="ai-avatar">🤖💗</div>
+  <h2>Meet Your AI Buddy: Emotion Helper!</h2>
+  <p>
+    Hello, little explorers! I'm <strong>Emotion Helper</strong>,
+    your friendly AI buddy!
+  </p>
+  <p>
+    I'm here to support you whenever you need help during your
+    learning adventure. Feeling confused, worried or unsure about
+    something? Don't worry! You can come and talk to me.
+  </p>
+  <p>
+    I will do my best to listen, guide you and help you feel more
+    confident while learning.
+  </p>
+  <div class="ai-hint">
+    👇 Tap the robot icon at the bottom right corner to chat with me!
+  </div>
+</section>
+
+<!-- VIDEO INTRODUCTION: ONE SLOT PER YEAR -->
+<h2 class="section-title" id="videos">🎬 Video Introduction</h2>
+<section class="learning-section">
+  <h2>📺 Let's Watch and Learn!</h2>
+  <p class="section-description">
+    Watch the introductory video prepared for your learning year.
+  </p>
+
+  <div class="year-block" id="year1">
+    <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Introduction</h3></div>
+    <div class="placeholder">🎬 YEAR 1 VIDEO SLOT<br>Replace this placeholder with your Year 1 video.</div>
+    <!-- YEAR 1 VIDEO EMBED SLOT:
+    <iframe class="media-frame" src="PASTE_YEAR_1_VIDEO_EMBED_LINK" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <div class="year-block" id="year2">
+    <div class="year-heading"><span class="year-icon">🦋</span><h3>Year 2 Introduction</h3></div>
+    <div class="placeholder">🎬 YEAR 2 VIDEO SLOT<br>Replace this placeholder with your Year 2 video.</div>
+    <!-- YEAR 2 VIDEO EMBED SLOT:
+    <iframe class="media-frame" src="PASTE_YEAR_2_VIDEO_EMBED_LINK" allowfullscreen></iframe>
+    -->
+  </div>
+
+  <div class="year-block" id="year3">
+    <div class="year-heading"><span class="year-icon">🦄</span><h3>Year 3 Introduction</h3></div>
+    <div class="placeholder">🎬 YEAR 3 VIDEO SLOT<br>Replace this placeholder with your Year 3 video.</div>
+    <!-- YEAR 3 VIDEO EMBED SLOT:
+    <iframe class="media-frame" src="PASTE_YEAR_3_VIDEO_EMBED_LINK" allowfullscreen></iframe>
+    -->
+  </div>
+</section>
+
+<!-- QUESTION DRILLING -->
+<h2 class="section-title" id="practice">📝 English Practice &amp; Drilling</h2>
+<section class="learning-section">
+  <h2>🌈 Let's Practise Together!</h2>
+  <p class="section-description">
+    Improve your English through questions and activities
+    specially organised for each learning year.
+  </p>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Practice</h3></div>
+    <div class="placeholder">📝 YEAR 1 QUESTION DRILLING SLOT<br>Insert your Year 1 question activity embed code here.</div>
+    <!-- YEAR 1 QUESTION DRILLING EMBED SLOT -->
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦋</span><h3>Year 2 Practice</h3></div>
+    <div class="placeholder">📝 YEAR 2 QUESTION DRILLING SLOT<br>Insert your Year 2 question activity embed code here.</div>
+    <!-- YEAR 2 QUESTION DRILLING EMBED SLOT -->
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦄</span><h3>Year 3 Practice</h3></div>
+    <div class="placeholder">📝 YEAR 3 QUESTION DRILLING SLOT<br>Insert your Year 3 question activity embed code here.</div>
+    <!-- YEAR 3 QUESTION DRILLING EMBED SLOT -->
+  </div>
+</section>
+
+<!-- GAMES -->
+<h2 class="section-title" id="games">🎮 Interactive Learning Games</h2>
+<section class="learning-section">
+  <h2>🕹️ Let's Play and Learn!</h2>
+  <p class="section-description">
+    Have fun while developing your English language skills!
+  </p>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Games</h3></div>
+    <div class="placeholder">🎮 YEAR 1 GAME SLOT<br>Insert your Year 1 game embed code here.</div>
+    <!-- YEAR 1 GAME EMBED SLOT -->
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦋</span><h3>Year 2 Games</h3></div>
+    <div class="placeholder">🎮 YEAR 2 GAME SLOT<br>Insert your Year 2 game embed code here.</div>
+    <!-- YEAR 2 GAME EMBED SLOT -->
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦄</span><h3>Year 3 Games</h3></div>
+    <div class="placeholder">🎮 YEAR 3 GAME SLOT<br>Insert your Year 3 game embed code here.</div>
+    <!-- YEAR 3 GAME EMBED SLOT -->
+  </div>
+</section>
+
+<!-- WORKSHEETS -->
+<h2 class="section-title" id="worksheets">📚 Worksheet Collection</h2>
+<section class="learning-section">
+  <h2>📖 Explore Your Worksheets!</h2>
+  <p class="section-description">
+    Find your worksheets, complete the activities and check your answers.
+  </p>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Worksheets</h3></div>
+    <div class="placeholder">📄 YEAR 1 PDF COLLECTION SLOT<br>Insert your Year 1 worksheet PDF here.</div>
+    <!-- YEAR 1 PDF SLOT:
+    <iframe class="pdf-frame" src="PASTE_YEAR_1_PDF_EMBED_LINK"></iframe>
+    <a class="resource-link" href="PASTE_YEAR_1_PDF_DOWNLOAD_LINK" target="_blank">Download Year 1 Worksheets</a>
+    -->
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦋</span><h3>Year 2 Worksheets</h3></div>
+    <div class="placeholder">📄 YEAR 2 PDF COLLECTION SLOT<br>Insert your Year 2 worksheet PDF here.</div>
+    <!-- YEAR 2 PDF SLOT:
+    <iframe class="pdf-frame" src="PASTE_YEAR_2_PDF_EMBED_LINK"></iframe>
+    <a class="resource-link" href="PASTE_YEAR_2_PDF_DOWNLOAD_LINK" target="_blank">Download Year 2 Worksheets</a>
+    -->
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦄</span><h3>Year 3 Worksheets</h3></div>
+    <div class="placeholder">📄 YEAR 3 PDF COLLECTION SLOT<br>Insert your Year 3 worksheet PDF here.</div>
+    <!-- YEAR 3 PDF SLOT:
+    <iframe class="pdf-frame" src="PASTE_YEAR_3_PDF_EMBED_LINK"></iframe>
+    <a class="resource-link" href="PASTE_YEAR_3_PDF_DOWNLOAD_LINK" target="_blank">Download Year 3 Worksheets</a>
+    -->
+  </div>
+</section>
+
+<!-- THREE SEPARATE AI ANSWER CHECKER SPACES - NOT BOTPRESS -->
+<h2 class="section-title" id="ai-checker">🤖 AI Worksheet Answer Checker</h2>
+<section class="learning-section">
+  <h2>✨ Check Your Answers with AI!</h2>
+  <p class="section-description">
+    Use the dedicated answer-checking spaces to receive feedback
+    and guidance on your worksheet answers.
+  </p>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🧸</span><h3>Year 1 Answer Checker</h3></div>
+    <div class="checker-area">
+      <h4>🌟 Year 1 AI Assistant</h4>
+      <p>A dedicated space for checking Year 1 worksheet answers.</p>
+      <div class="checker-placeholder" id="checker-year1">
+        🤖 YEAR 1 AI ANSWER CHECKER SLOT<br>
+        Insert your Year 1 answer-checking tool embed code here.
+      </div>
+      <!-- PASTE YEAR 1 ANSWER CHECKER CODE HERE -->
+    </div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦋</span><h3>Year 2 Answer Checker</h3></div>
+    <div class="checker-area">
+      <h4>🌟 Year 2 AI Assistant</h4>
+      <p>A dedicated space for checking Year 2 worksheet answers.</p>
+      <div class="checker-placeholder" id="checker-year2">
+        🤖 YEAR 2 AI ANSWER CHECKER SLOT<br>
+        Insert your Year 2 answer-checking tool embed code here.
+      </div>
+      <!-- PASTE YEAR 2 ANSWER CHECKER CODE HERE -->
+    </div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-heading"><span class="year-icon">🦄</span><h3>Year 3 Answer Checker</h3></div>
+    <div class="checker-area">
+      <h4>🌟 Year 3 AI Assistant</h4>
+      <p>A dedicated space for checking Year 3 worksheet answers.</p>
+      <div class="checker-placeholder" id="checker-year3">
+        🤖 YEAR 3 AI ANSWER CHECKER SLOT<br>
+        Insert your Year 3 answer-checking tool embed code here.
+      </div>
+      <!-- PASTE YEAR 3 ANSWER CHECKER CODE HERE -->
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- BACKGROUND MUSIC
+     Upload your MP3 into the same GitHub repository.
+     Change website-sound.mp3 to your exact filename.
+-->
+<audio id="websiteMusic" loop preload="none">
+  <source src="website-sound.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-control" id="musicButton"
+        type="button" onclick="toggleWebsiteMusic()">
+  🔇 Music OFF
+</button>
+
+<footer>
+  <div style="font-size:2rem">🌈 💗 ⭐</div>
+  <strong>The Emotion Explorers</strong>
+  <p>Feelings Adventure | Learn • Practise • Play • Grow</p>
+  Made with love for little English learners.
+</footer>
+
+<script>
+async function toggleWebsiteMusic() {
+  const music = document.getElementById("websiteMusic");
+  const button = document.getElementById("musicButton");
+
+  if (music.paused) {
+    try {
+      await music.play();
+      button.textContent = "🎵 Music ON";
+    } catch (error) {
+      button.textContent = "🔇 Music OFF";
+      alert("Please check that your MP3 file is uploaded and the filename is correct.");
+    }
+  } else {
+    music.pause();
+    button.textContent = "🔇 Music OFF";
+  }
+}
+</script>
+
+</body>
+</html>
