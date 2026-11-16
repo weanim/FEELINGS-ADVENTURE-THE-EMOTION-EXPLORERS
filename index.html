@@ -418,7 +418,28 @@ footer {
   }
 
 }
-</style>
+.answer-checker-chat {
+  width: 100%;
+  max-width: 900px;
+  height: 650px;
+  margin: 25px auto;
+  background: white;
+  border: 3px solid white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #7651b522;
+}
+
+#bp-answer-checker {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  .answer-checker-chat {
+    height: 600px;
+  }
+}</style>
 </head>
 
 <body>
@@ -942,30 +963,35 @@ footer {
   </div>
 </section>
 
-<!-- ONE COMBINED AI ANSWER CHECKER -->
-<h2 class="section-title" id="answer-checker">📝 Worksheet Answer Checker</h2>
+
+<!-- AI WORKSHEET ANSWER CHECKER -->
+<h2 class="section-title" id="answer-checker">
+  📝 AI Worksheet Answer Checker
+</h2>
+
 <section class="learning-section">
-  <h2>✨ Check Your Answers!</h2>
+  <h2>🌟 Let's Check Your Worksheet!</h2>
+
   <p class="section-description">
-    Select your year inside the checker and receive instant feedback.
+    Have you completed your worksheet? Great job!
+    Take a clear picture of your completed worksheet
+    and upload it in the chat below.
+    Our AI Checker will help you check your answers!
   </p>
 
-  <div class="year-block">
-    <div class="year-heading">
-      <span class="year-icon">🌈</span>
-      <h3>Emotion Island Answer Checker (Year 1–3)</h3>
-    </div>
+  <div class="checker-area">
+    <h4>📸 How to Use the AI Checker</h4>
+    <p>
+      1. Complete your worksheet first.<br>
+      2. Take a clear picture of your answers.<br>
+      3. Upload your worksheet in the chat below.<br>
+      4. Tell the AI Checker which year you are in.<br>
+      5. Wait for your feedback!
+    </p>
+  </div>
 
-    <div class="checker-area">
-      <h4>🌟 One Checker for All Years</h4>
-      <p>Choose Year 1, Year 2 or Year 3 inside the checker.</p>
-
-      <a class="resource-link"
-         href="ai-checker.html"
-         target="_blank">
-        Open Worksheet Answer Checker
-      </a>
-    </div>
+  <div class="answer-checker-chat">
+    <div id="bp-answer-checker"></div>
   </div>
 </section>
 
