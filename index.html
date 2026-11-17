@@ -983,6 +983,9 @@ footer {
       <span id="counter-y1" class="flipbook-counter">1 / 4</span>
       <button onclick="nextPage('y1')">❯</button>
     </div>
+  <button class="fullscreen-btn" onclick="openBookFullscreen('y1')">
+  ⛶ Open Full Page
+</button>
   </div>
 
   <!-- YEAR 2 BOOK -->
@@ -996,6 +999,9 @@ footer {
       <span id="counter-y2" class="flipbook-counter">1 / 4</span>
       <button onclick="nextPage('y2')">❯</button>
     </div>
+     <button class="fullscreen-btn" onclick="openBookFullscreen('y2')">
+  ⛶ Open Full Page
+</button>
   </div>
 
   <!-- YEAR 3 BOOK -->
@@ -1009,6 +1015,9 @@ footer {
       <span id="counter-y3" class="flipbook-counter">1 / 4</span>
       <button onclick="nextPage('y3')">❯</button>
     </div>
+    <button class="fullscreen-btn" onclick="openBookFullscreen('y3')">
+  ⛶ Open Full Page
+</button>
   </div>
 
 </div>
@@ -1359,21 +1368,21 @@ const flipbooks = {};
 
 const bookPages = {
   y1: [
-    "./cover%20page%20y1.jpeg",
+    "./cover%20note%20y1.jpeg",
     "./note%201%20y1.jpeg",
     "./note%202%20y1.jpeg",
     "./note%203%20y1.jpeg"
   ],
 
   y2: [
-    "./cover%20page%20y2.jpeg",
+    "./cover%20note%20y2.jpeg",
     "./note%201%20y2.jpeg",
     "./note%202%20y2.jpeg",
     "./note%203%20y2.jpeg"
   ],
 
   y3: [
-    "./cover%20page%20y3.jpeg",
+    "./cover%20note%20y3.jpeg",
     "./note%201%20y3.jpeg",
     "./note%202%20y3.jpeg",
     "./note%203%20y3.jpeg"
