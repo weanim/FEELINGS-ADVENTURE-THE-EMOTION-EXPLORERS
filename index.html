@@ -517,7 +517,92 @@ footer {
 
 .notes-section {
     margin-top: 38px;
-}</style>
+}
+/* ===== PRISVELA 3D FLIPBOOK ===== */
+
+.notes-books-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 25px 10px;
+}
+
+.notes-book-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(255,255,255,0.9);
+  border-radius: 22px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(100, 80, 150, 0.12);
+}
+
+.notes-book-card h3 {
+  margin-bottom: 15px;
+  color: #66518c;
+  font-size: 1.3rem;
+}
+
+.flipbook {
+  width: 100%;
+  max-width: 380px;
+  height: 450px;
+  margin: 0 auto;
+}
+
+.flipbook .page {
+  background: white;
+  overflow: hidden;
+}
+
+.flipbook .page img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.flipbook-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 18px;
+}
+
+.flipbook-controls button {
+  border: none;
+  border-radius: 20px;
+  padding: 9px 18px;
+  background: #a58bd4;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.flipbook-controls button:hover {
+  background: #8066b5;
+  transform: translateY(-2px);
+}
+
+.flipbook-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.flipbook-counter {
+  color: #66518c;
+  font-weight: bold;
+  min-width: 55px;
+}
+
+@media (max-width: 480px) {
+  .flipbook {
+    height: 380px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -884,44 +969,49 @@ footer {
         Read, understand and remember what you have learned!
     </p>
 
-    <!-- YEAR 1 NOTES -->
-    <div class="notes-year">
+   
+<div class="notes-books-container">
 
-        <h3>🧸 Year 1 Notes – Meet the Emotions!</h3>
+  <!-- YEAR 1 BOOK -->
+  <div class="notes-book-card">
+    <h3>📘 Year 1 Notes</h3>
 
-        <img
-            src="./notes%20y1.jpeg"
-            alt="Year 1 Learning Notes"
-            class="notes-image"
-        >
+    <div id="book-y1" class="flipbook"></div>
 
+    <div class="flipbook-controls">
+      <button onclick="previousPage('y1')">❮</button>
+      <span id="counter-y1" class="flipbook-counter">1 / 4</span>
+      <button onclick="nextPage('y1')">❯</button>
     </div>
+  </div>
 
-    <!-- YEAR 2 NOTES -->
-    <div class="notes-year">
+  <!-- YEAR 2 BOOK -->
+  <div class="notes-book-card">
+    <h3>📗 Year 2 Notes</h3>
 
-        <h3>🦋 Year 2 Notes – What Are They Feeling?</h3>
+    <div id="book-y2" class="flipbook"></div>
 
-        <img
-            src="./notes%20y2.jpeg"
-            alt="Year 2 Learning Notes"
-            class="notes-image"
-        >
-
+    <div class="flipbook-controls">
+      <button onclick="previousPage('y2')">❮</button>
+      <span id="counter-y2" class="flipbook-counter">1 / 4</span>
+      <button onclick="nextPage('y2')">❯</button>
     </div>
+  </div>
 
-    <!-- YEAR 3 NOTES -->
-    <div class="notes-year">
+  <!-- YEAR 3 BOOK -->
+  <div class="notes-book-card">
+    <h3>📙 Year 3 Notes</h3>
 
-        <h3>🦄 Year 3 Notes – Discovering Feelings</h3>
+    <div id="book-y3" class="flipbook"></div>
 
-        <img
-            src="./notes%20y3.jpeg"
-            alt="Year 3 Learning Notes"
-            class="notes-image"
-        >
-
+    <div class="flipbook-controls">
+      <button onclick="previousPage('y3')">❮</button>
+      <span id="counter-y3" class="flipbook-counter">1 / 4</span>
+      <button onclick="nextPage('y3')">❯</button>
     </div>
+  </div>
+
+</div>
 
 </section>
      
@@ -1260,5 +1350,91 @@ startMusic();
 </script>
 <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2026/11/14/06/20261114063642-3WZV16XR.js" defer></script>
+
+<!-- PAGE FLIP LIBRARY -->
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+<script>
+const flipbooks = {};
+
+const bookPages = {
+  y1: [
+    "./notes/cover%20page%20y1.jpeg",
+    "./notes/note%201%20y1.jpeg",
+    "./notes/note%202%20y1.jpeg",
+    "./notes/note%203%20y1.jpeg"
+  ],
+
+  y2: [
+    "./notes/cover%20page%20y2.jpeg",
+    "./notes/note%201%20y2.jpeg",
+    "./notes/note%202%20y2.jpeg",
+    "./notes/note%203%20y2.jpeg"
+  ],
+
+  y3: [
+    "./notes/cover%20page%20y3.jpeg",
+    "./notes/note%201%20y3.jpeg",
+    "./notes/note%202%20y3.jpeg",
+    "./notes/note%203%20y3.jpeg"
+  ]
+};
+
+function createFlipbook(year) {
+  const element = document.getElementById("book-" + year);
+
+  if (!element || typeof St === "undefined") return;
+
+  const pageFlip = new St.PageFlip(element, {
+    width: 320,
+    height: 420,
+    size: "stretch",
+    minWidth: 250,
+    maxWidth: 450,
+    minHeight: 330,
+    maxHeight: 600,
+    showCover: true,
+    usePortrait: true,
+    mobileScrollSupport: false,
+    flippingTime: 800,
+    maxShadowOpacity: 0.35
+  });
+
+  pageFlip.loadFromImages(bookPages[year]);
+
+  pageFlip.on("flip", function(event) {
+    updateCounter(year, event.data);
+  });
+
+  flipbooks[year] = pageFlip;
+}
+
+function updateCounter(year, currentIndex) {
+  const counter = document.getElementById("counter-" + year);
+
+  if (counter) {
+    counter.textContent =
+      (currentIndex + 1) + " / " + bookPages[year].length;
+  }
+}
+
+function nextPage(year) {
+  if (flipbooks[year]) {
+    flipbooks[year].flipNext();
+  }
+}
+
+function previousPage(year) {
+  if (flipbooks[year]) {
+    flipbooks[year].flipPrev();
+  }
+}
+
+window.addEventListener("load", function() {
+  createFlipbook("y1");
+  createFlipbook("y2");
+  createFlipbook("y3");
+});
+</script>
 </body>
 </html>
