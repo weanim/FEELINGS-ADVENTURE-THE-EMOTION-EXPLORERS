@@ -602,6 +602,38 @@ footer {
     height: 380px;
   }
 }
+
+.fullscreen-btn {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #8e79c5, #d58bb8);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #7651b533;
+}
+
+.fullscreen-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.flipbook:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  background: #f5eaff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flipbook:fullscreen .page {
+  background: white;
+}
 </style>
 </head>
 
@@ -1436,6 +1468,19 @@ function nextPage(year) {
 function previousPage(year) {
   if (flipbooks[year]) {
     flipbooks[year].flipPrev();
+  }
+}
+
+
+function openBookFullscreen(year) {
+  const book = document.getElementById("book-" + year);
+
+  if (!book) return;
+
+  if (book.requestFullscreen) {
+    book.requestFullscreen();
+  } else if (book.webkitRequestFullscreen) {
+    book.webkitRequestFullscreen();
   }
 }
 
