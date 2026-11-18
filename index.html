@@ -1538,5 +1538,24 @@ window.addEventListener("load", function() {
   createFlipbook("y3");
 });
 </script>
+<script>
+window.openEmotionChat = function () {
+
+  if (window.botpress && typeof window.botpress.open === "function") {
+    window.botpress.open();
+    return;
+  }
+
+  if (window.botpress && typeof window.botpress.on === "function") {
+    window.botpress.on("webchat:initialized", function () {
+      window.botpress.open();
+    });
+    return;
+  }
+
+  console.log("Botpress is not loaded yet.");
+
+};
+</script>
 </body>
 </html>
