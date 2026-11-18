@@ -611,7 +611,20 @@ footer {
 .flipbook:fullscreen .page {
   background: white;
 }
-</style>
+/* FIX BOTPRESS FLOATING ICON */
+.bpFabWrapper {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    left: auto !important;
+    z-index: 2147483647 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.bpWebchat {
+    z-index: 2147483647 !important;
+}</style>
 </head>
 
 <body>
@@ -960,12 +973,15 @@ footer {
   object-fit: cover;
 }
 
-/* BOTPRESS CHAT WIDGET */
-#bp-web-widget-container,
-#bp-web-widget,
-.bp-widget-web,
-.bpWebchat {
-    z-index: 999999 !important;
+/* FORCE BOTPRESS FLOATING CHAT ICON */
+#bp-web-widget-container {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    z-index: 2147483647 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }</style>
     
   </div>
