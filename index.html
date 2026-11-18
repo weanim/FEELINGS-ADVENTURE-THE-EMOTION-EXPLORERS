@@ -659,15 +659,19 @@ footer {
 </style>
 
 <script>
-function openEmotionChat() {
-  if (window.botpress && window.botpress.toggle) {
-    window.botpress.toggle();
-  } else if (window.botpress && window.botpress.open) {
-    window.botpress.open();
-  } else {
-    alert("Emotion Helper is loading. Please try again!");
-  }
-}
+window.addEventListener('load', function () {
+
+  const button = document.getElementById('emotion-chat-launcher');
+
+  if (!button) return;
+
+  button.onclick = function () {
+    if (window.botpress) {
+      window.botpress.open();
+    }
+  };
+
+});
 </script>
 
 <!-- BOTPRESS AI -->
