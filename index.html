@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- RESTORE EMOTION HELPER CHAT BUBBLE -->
-<link rel="stylesheet" href="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.css">
-
-<script src="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.js"></script>
-
-<script>
-fetch("https://vdk-viber-runtime-prod.bot.botpress.host/edge/bots/de628bcc-b01e-4b24-9d09-2808b41b8f6d/config")
-  .then(response => response.json())
-  .then(({ webchat }) => {
-    VdkEdgeWebchat.mount({
-      ...webchat,
-      mode: "bubble",
-      baseUrl: "https://vdk-viber-runtime-prod.bot.botpress.host",
-      botId: "de628bcc-b01e-4b24-9d09-2808b41b8f6d"
-    });
-  })
-  .catch(error => console.error("Emotion Helper could not load:", error));
-</script>
-
 
 <style>
 :root {
