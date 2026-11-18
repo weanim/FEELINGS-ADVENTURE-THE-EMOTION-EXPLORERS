@@ -627,7 +627,52 @@ footer {
 }</style>
 </head>
 
-<body>
+<!-- FLOATING AI CHAT ICON -->
+<button id="emotion-chat-launcher" onclick="openEmotionChat()" title="Chat with Emotion Helper">
+  🤖
+</button>
+
+<style>
+#emotion-chat-launcher {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background: linear-gradient(135deg, #9b7ede, #f4a6c1);
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+#emotion-chat-launcher:hover {
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+function openEmotionChat() {
+  if (window.botpress && window.botpress.toggle) {
+    window.botpress.toggle();
+  } else if (window.botpress && window.botpress.open) {
+    window.botpress.open();
+  } else {
+    alert("Emotion Helper is loading. Please try again!");
+  }
+}
+</script>
+
+<!-- BOTPRESS AI -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/11/14/06/20261114063642-3WZV16XR.js" defer></script><body>
 <!-- PASTEL FANTASY BACKGROUND DECORATIONS -->
 <div class="fantasy-decor" aria-hidden="true">
 
