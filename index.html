@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feelings Adventure | The Emotion Explorers</title>
-
-<!-- ==================================================
-     EMOTION HELPER - ONE BOTPRESS CHATBOT FOR THE
-     ENTIRE WEBSITE. Replace this section only if needed.
-================================================== -->
-<link rel="stylesheet" href="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.css">
-<script src="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.js"></script>
 <script>
 fetch("https://vdk-viber-runtime-prod.bot.botpress.host/edge/bots/de628bcc-b01e-4b24-9d09-2808b41b8f6d/config")
   .then(response => response.json())
@@ -983,7 +973,13 @@ footer {
   overflow: hidden;
   object-fit: cover;
 }
-</style>
+/* RESTORE FLOATING EMOTION HELPER CHAT ICON */
+#bp-web-widget-container,
+#bp-web-widget,
+.bp-widget-web,
+.bpWebchat {
+    z-index: 999999 !important;
+}</style>
     
   </div>
 </section>
